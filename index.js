@@ -43,7 +43,8 @@ dropZone.addEventListener("drop",(e)=>
     e.preventDefault()
     dropZone.classList.remove("dragged")
     const files=e.dataTransfer.files
-    console.table(files);
+    // console.table(files);
+    console.log(`file: ${files}`);
     if(files.length==0)showtoast("No file Selected")
     else if(files.length==1)
     {
@@ -75,8 +76,14 @@ browseBtn.addEventListener("click",()=>
 
 const uploadFile=()=>
 {
-    progresscontainer.style.display=`block`;
+    
     const file=fileinput.files[0]
+    if(file.size>maxAllowedSize)
+    {
+        showtoast("File Size Limit is 100MB")
+        return;
+    }
+    progresscontainer.style.display=`block`;
     const formData=new FormData()
     formData.append("myfile",file)
 
@@ -111,7 +118,7 @@ const updateprogress = (e)=>
     const percent=Math.round((e.loaded/e.total)*100);
     console.log(e)
     bgprogress.style.width=`${percent}%`
-    percentdiv.innerText=percent;
+    percentdiv.innerText=`${percent}%`;
     progressbar.style.transform=`scaleX(${percent/100})`
 }
 

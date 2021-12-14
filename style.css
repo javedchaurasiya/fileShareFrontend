@@ -15,6 +15,7 @@ body, html{
 }
 
 
+
 body,.drop-zone,.upload-container{
     display: flex;
     align-items: center;
@@ -114,20 +115,20 @@ body,.drop-zone,.upload-container{
 
 .progress-container .bg-progress
 {
-    background-color: var(--main-bg-color);
-    width: 0%;
+    background-color: blue;
+    width: 100%;
     height: 100%;
     border-radius: 10%;
     transform: scaleX(0);
     transform-origin: left;
     transition: width .25s linear;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
 }
 .progress-container .inner-container
 {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     margin: 10px 15px;
     width: calc(100% - 30px);
     
@@ -143,6 +144,7 @@ body,.drop-zone,.upload-container{
     height: 3px;
     width: 100%;
     background: #03a;
+    /* background: black; */
     border-radius: 2px;
     transform-origin: left;
     transform: scaleX(0);
